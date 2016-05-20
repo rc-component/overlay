@@ -32,7 +32,7 @@ git config user.email "hello@ghbot.com"
 
 # The first and only commit to this new Git repo contains all the
 # files present with the commit message "Deploy to GitHub Pages".
-git add .
+git add -f .
 git commit -m "Deploy Storybook to GitHub Pages"
 
 # Force push from the current repo's master branch to the remote
