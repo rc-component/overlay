@@ -68,9 +68,9 @@ class Overlay extends React.Component {
   }
   render() {
     let overlay = null
-    let {width, height, ...styles} = Object.assign({}, overlayStyles, this.props.style)
+    let styles = Object.assign({}, overlayStyles, this.props.style)
     if (this.state.show) {
-      overlay = <div key="overlay"  style={{...styles}}/>
+      overlay = <div key="overlay"  style={styles}/>
     }
     return (
       <Animate animation={{}} component="" transitionAppear={true} transitionName={transitions}>
