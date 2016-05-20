@@ -3,14 +3,14 @@
 }
 .appearActive {
   opacity: 1;
-  transition: opacity 300ms ease-out;
+  transition: opacity 500ms ease-out;
 }
 .enter {
   opacity: 0;
 }
 .enterActive{
   opacity: 1;
-  transition: opacity 300ms ease-out;
+  transition: opacity 500ms ease-out;
 }
 .leave {
   opacity: 1;
