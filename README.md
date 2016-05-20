@@ -14,3 +14,17 @@ Build with [webpack](https://webpack.github.io/) and [CSS Modules](https://githu
   style={{zIndex: 99, backgroundColor: 'rgba(0,0,0,0.2)'}}
   delay={200}/>
 ```
+
+## Props
+
+name   | type   | default    | description
+-------| ------ | ---------- | ------------
+show   | boolean| false      | show the overlay if true
+deplay | number | 0          | delay in milisecond for show element
+width  | number | 0          | min widht of overlay element
+height | number | 0          | min height of overlay element
+style  | object | {...}      | style for overlay element
+
+# License
+
+MIT
