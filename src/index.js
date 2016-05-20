@@ -13,7 +13,8 @@ const overlayStyles = {
 class Overlay extends React.Component {
   static defaultProps = {
     width: 0,
-    height: 0
+    height: 0,
+    delay: 0
   }
   static propTypes = {
     // min height
@@ -41,17 +42,19 @@ class Overlay extends React.Component {
     this.resize()
   }
   componentWillReceiveProps(props) {
-    let delay = props.delay || this.props.delay
+    let delay = props.delay
     let self = this
+    clearTimeout(this.timeout)
     if (props.show) {
-      clearTimeout(this.timeout)
-      this.timeout = setTimeout(function () {
-        if (self.props.show) {
-          self.setState({
-            show: true
-          })
-        }
-      }, delay)
+      if (delay) {
+        this.timeout = setTimeout(() => {
+          if (this.props.show) {
+            this.setState({ show: true })
+          }
+        }, delay)
+      } else {
+        this.setState({ show: true })
+      }
     } else {
       this.setState({show: false})
     }
@@ -69,7 +72,7 @@ class Overlay extends React.Component {
   render() {
     let overlay = null
     let styles = Object.assign({}, overlayStyles, this.props.style)
-    if (this.state.show) {
+    if (this.props.show) {
       overlay = <div key="overlay"  style={styles}/>
     }
     return (
