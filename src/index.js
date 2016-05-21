@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import transitions from './transitions.css';
-import Animate from '@chemzqm/rc-animate';
+import TransitionGroup from 'react-addons-css-transition-group'
 
 const overlayStyles = {
   position: 'absolute',
@@ -9,6 +9,13 @@ const overlayStyles = {
   left: 0,
   top: 0
 }
+
+let FirstChild = React.createClass({
+  render: function() {
+    var children = React.Children.toArray(this.props.children);
+    return children[0] || null;
+  }
+})
 
 class Overlay extends React.Component {
   static defaultProps = {
@@ -43,7 +50,6 @@ class Overlay extends React.Component {
   }
   componentWillReceiveProps(props) {
     let delay = props.delay
-    let self = this
     clearTimeout(this.timeout)
     if (props.show) {
       if (delay) {
@@ -76,9 +82,15 @@ class Overlay extends React.Component {
       overlay = <div key="overlay"  style={styles}/>
     }
     return (
-      <Animate animation={{}} component="" transitionAppear={true} transitionName={transitions}>
+      <TransitionGroup
+        component={FirstChild}
+        transitionAppearTimeout={300}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        transitionName={transitions}
+        transitionAppear={true}>
         {overlay}
-      </Animate>
+      </TransitionGroup>
     )
   }
 }
