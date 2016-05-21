@@ -13,10 +13,28 @@ const overlayStyles = {
 
 let FirstChild = React.createClass({
   render: function() {
-    var children = React.Children.toArray(this.props.children);
+    let children = React.Children.toArray(this.props.children);
     return children[0] || null;
   }
 })
+
+let body = document.body
+
+function findPostionedElement(el) {
+  while (el) {
+    el = el.parentNode
+    if (el === body) return body
+    if (el) {
+      let pos = computedStyle(el, 'position')
+      if (pos === 'static') {
+        el = el.parentNode
+      } else {
+        break
+      }
+    }
+  }
+  return el
+}
 
 class Overlay extends React.Component {
   static defaultProps = {
@@ -41,11 +59,6 @@ class Overlay extends React.Component {
     }
   }
   componentDidMount() {
-    var el = this.el = ReactDom.findDOMNode(this)
-    if (el && computedStyle(el.parentNode, 'position') === 'static'
-        && el.parentNode !== document.body) {
-      el.parentNode.style.position = 'relative'
-    }
     this.resize()
   }
   componentWillUnmount() {
@@ -72,9 +85,11 @@ class Overlay extends React.Component {
     }
   }
   resize() {
-    let el = this.el
-    if (el && el.parentNode) {
-      let rect = el.parentNode.getBoundingClientRect()
+    let el = ReactDom.findDOMNode(this)
+    if (!el) return
+    let parent = findPostionedElement(el)
+    if (parent) {
+      let rect = parent.getBoundingClientRect()
       let width = Math.max(this.props.width, rect.width)
       let height = Math.max(this.props.height, rect.height)
       el.style.width = width + 'px'
