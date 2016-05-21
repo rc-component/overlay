@@ -1,6 +1,8 @@
 # Overlay Component
 
-Overlay Component for [react](https://facebook.github.io/react/).
+Overlay component for [react](https://facebook.github.io/react/).
+
+Overlay is rendered to cover parent element, parent element should have `position: relative` or `position: fixed`
 
 Build with [webpack](https://webpack.github.io/) and [CSS Modules](https://github.com/css-modules/css-modules)
 
