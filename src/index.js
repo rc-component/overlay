@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import transitions from './transitions.css';
 import TransitionGroup from 'react-addons-css-transition-group'
+import computedStyle from 'computed-style'
 
 const overlayStyles = {
   position: 'absolute',
@@ -40,6 +41,11 @@ class Overlay extends React.Component {
     }
   }
   componentDidMount() {
+    var el = this.el = ReactDom.findDOMNode(this)
+    if (el && computedStyle(el.parentNode, 'position') === 'static'
+        && el.parentNode !== document.body) {
+      el.parentNode.style.position = 'relative'
+    }
     this.resize()
   }
   componentWillUnmount() {
@@ -66,7 +72,7 @@ class Overlay extends React.Component {
     }
   }
   resize() {
-    let el = ReactDom.findDOMNode(this)
+    let el = this.el
     if (el && el.parentNode) {
       let rect = el.parentNode.getBoundingClientRect()
       let width = Math.max(this.props.width, rect.width)
