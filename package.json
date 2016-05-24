@@ -1,6 +1,6 @@
 {
   "name": "rc-overlay",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Overlay Component",
   "repository": {
     "type": "git",
@@ -51,7 +51,6 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
     "computed-style": "^0.3.0",
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.1.0",

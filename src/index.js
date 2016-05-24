@@ -19,7 +19,6 @@ const FirstChild = React.createClass({
 })
 
 const body = document.body
-const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 
 function findPostionedElement(el) {
   while (el) {
@@ -90,8 +89,9 @@ class Overlay extends React.Component {
     if (!el) return
     let parent = findPostionedElement(el)
     if (parent) {
-      let rect 
+      let rect
       if (parent === body) {
+        let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
         rect = {
           width: body.clientWidth,
           height: Math.max(body.clientHeight, vh)
@@ -106,12 +106,8 @@ class Overlay extends React.Component {
     }
   }
   render() {
-    let overlay = null
     let props = this.props
     let styles = Object.assign({}, overlayStyles, props.style)
-    if (props.show) {
-      overlay = <div key="overlay"  style={styles}>{props.children}</div>
-    }
     return (
       <TransitionGroup
         component={FirstChild}
@@ -120,7 +116,11 @@ class Overlay extends React.Component {
         transitionLeaveTimeout={300}
         transitionName={transitions}
         transitionAppear={true}>
-        {overlay}
+        { do {
+          if (props.show) {
+            <div key="overlay" className={props.className} style={styles}>{props.children}</div>
+          }
+        }}
       </TransitionGroup>
     )
   }
