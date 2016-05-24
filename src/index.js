@@ -11,14 +11,15 @@ const overlayStyles = {
   top: 0
 }
 
-let FirstChild = React.createClass({
+const FirstChild = React.createClass({
   render: function() {
     let children = React.Children.toArray(this.props.children);
     return children[0] || null;
   }
 })
 
-let body = document.body
+const body = document.body
+const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 
 function findPostionedElement(el) {
   while (el) {
@@ -89,7 +90,15 @@ class Overlay extends React.Component {
     if (!el) return
     let parent = findPostionedElement(el)
     if (parent) {
-      let rect = parent.getBoundingClientRect()
+      let rect 
+      if (parent === body) {
+        rect = {
+          width: body.clientWidth,
+          height: Math.max(body.clientHeight, vh)
+        }
+      } else {
+        rect = parent.getBoundingClientRect()
+      }
       let width = Math.max(this.props.width, rect.width)
       let height = Math.max(this.props.height, rect.height)
       el.style.width = width + 'px'
