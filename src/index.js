@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import transitions from './transitions.css';
+import React from 'react'
+import ReactDom from 'react-dom'
+import transitions from './transitions.css'
 import TransitionGroup from 'react-addons-css-transition-group'
 import computedStyle from 'computed-style'
 
@@ -13,8 +13,8 @@ const overlayStyles = {
 
 const FirstChild = React.createClass({
   render: function() {
-    let children = React.Children.toArray(this.props.children);
-    return children[0] || null;
+    let children = React.Children.toArray(this.props.children)
+    return children[0] || null
   }
 })
 
