@@ -88,22 +88,20 @@ class Overlay extends React.Component {
     if (!el) return
     let parent = findPostionedElement(el)
     if (parent) {
-      let rect
       if (parent === body) {
         let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-        rect = {
+        let rect = {
           width: body.clientWidth,
           height: Math.max(body.clientHeight, vh)
         }
+        el.style.width = rect.width + 'px'
+        el.style.height = rect.height + 'px'
         el.style.position = 'fixed'
       } else {
-        rect = parent.getBoundingClientRect()
         el.style.position = computedStyle(parent, 'position')
+        el.style.width = Math.max(this.props.width, parent.scrollWidth) + 'px'
+        el.style.height = Math.max(this.props.height, parent.scrollHeight) + 'px'
       }
-      let width = Math.max(this.props.width, rect.width)
-      let height = Math.max(this.props.height, rect.height)
-      el.style.width = width + 'px'
-      el.style.height = height + 'px'
     }
   }
   render() {
