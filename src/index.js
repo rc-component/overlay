@@ -5,7 +5,6 @@ import TransitionGroup from 'react-addons-css-transition-group'
 import computedStyle from 'computed-style'
 
 const overlayStyles = {
-  position: 'absolute',
   backgroundColor: 'rgba(0,0,0,0.3)',
   left: 0,
   top: 0
@@ -96,8 +95,10 @@ class Overlay extends React.Component {
           width: body.clientWidth,
           height: Math.max(body.clientHeight, vh)
         }
+        el.style.position = 'fixed'
       } else {
         rect = parent.getBoundingClientRect()
+        el.style.position = computedStyle(parent, 'position')
       }
       let width = Math.max(this.props.width, rect.width)
       let height = Math.max(this.props.height, rect.height)
