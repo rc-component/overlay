@@ -98,7 +98,7 @@ class Overlay extends React.Component {
         el.style.height = rect.height + 'px'
         el.style.position = 'fixed'
       } else {
-        el.style.position = computedStyle(parent, 'position')
+        el.style.position = 'absolute'
         el.style.width = Math.max(this.props.width, parent.scrollWidth) + 'px'
         el.style.height = Math.max(this.props.height, parent.scrollHeight) + 'px'
       }
