@@ -22,7 +22,7 @@ storiesOf('Overlay', module)
   ))
   .add('Overlay min height and width', () => (
     <div style={{...boxStyles}}>
-      <Overlay show={true} height={200} width={200}/>
+      <Overlay show={true}/>
     </div>
   ))
   .add('toggle overlay', () => {

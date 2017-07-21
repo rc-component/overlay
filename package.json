@@ -25,7 +25,6 @@
     "@kadira/storybook": "^1.12.0",
     "babel-cli": "^6.5.0",
     "babel-core": "^6.5.0",
-    "babel-runtime": "^6.5.0",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.5.0",
@@ -34,6 +33,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
+    "babel-runtime": "^6.5.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.2.0",
@@ -48,16 +48,19 @@
     "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.9.1",
     "raw-loader": "^0.5.1",
-    "react": "^15.0.0",
+    "react": "^15.6.1",
     "react-addons-test-utils": "^15.0.0",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "computed-style": "^0.3.0",
+    "prop-types": "^15.5.10",
+    "react-dom": "^15.6.1",
+    "react-transition-group": "^2.1.0"
+  },
+  "peerDependencies": {
     "react": "^15.0.0",
-    "react-addons-css-transition-group": "^15.1.0",
     "react-dom": "^15.0.0"
   },
   "main": "dist/index.js",
