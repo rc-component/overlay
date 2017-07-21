@@ -4,8 +4,6 @@ Overlay component for [react](https://facebook.github.io/react/).
 
 Overlay is rendered to cover positioned element (css position not static)
 
-Build with [webpack](https://webpack.github.io/) and [CSS Modules](https://github.com/css-modules/css-modules)
-
 [Story book](https://rc-component.github.io/overlay/)
 
 ## Usage
