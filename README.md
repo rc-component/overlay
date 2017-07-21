@@ -23,8 +23,6 @@ name   | type   | default    | description
 -------| ------ | ---------- | ------------
 show   | boolean| false      | show the overlay if true
 deplay | number | 0          | delay in milisecond for show element
-width  | number | 0          | min widht of overlay element
-height | number | 0          | min height of overlay element
 
 You can also have `className` and `style` applied to underneath overlay element.
 
